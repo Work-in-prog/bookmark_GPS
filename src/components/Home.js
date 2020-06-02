@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
+import {Link} from 'react-router-dom'
 
 export default class Home extends Component {
 	constructor() {
@@ -31,6 +32,7 @@ export default class Home extends Component {
 	render() {
 		return (
 			<div className="Page">
+				<Link to='/'>Go Back</Link>
 				<div className="column">
 					<h2 className="heading winnie">Winnie</h2>
 					<ul id="winnie-list">
