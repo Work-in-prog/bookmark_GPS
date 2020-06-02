@@ -5,7 +5,7 @@ const app = express()
 const db = mongoose.connection
 
 // Environment Variables
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/merncrud'
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/bookmarkgpscrud'
 const PORT = process.env.PORT || 8000
 
 // Connect to Mongo
@@ -23,8 +23,8 @@ app.use(express.json())// returns middleware that only parses JSON
 app.use(express.static('public'))
 
 // Routes
-const bookmarkController = require('./controllers/bookmark.js')
-app.use('/bookmark', bookmarkController)
+const bookmarkController = require('./controllers/bookmarks.js/index.js')
+app.use('/bookmarks', bookmarkController)
 
 app.use(express.static('public'))
 
