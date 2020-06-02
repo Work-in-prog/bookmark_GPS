@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Home from './Home.js';
 import { Link } from 'react-router-dom';
 
-
 class App extends Component {
 	constructor() {
 		super();
@@ -14,7 +13,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="Page-wrapper">
-				<Link to='/home'>Go Back</Link>
+				<Link to="/home">Go Back</Link>
 				<h2>ada app</h2>
 				<Home />
 			</div>
