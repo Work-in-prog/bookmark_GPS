@@ -6,21 +6,12 @@ import Home from './components/Home';
 import App from './components/App';
 const routes = [
 	{
-<<<<<<< HEAD
-		path: '/',
-		name: 'HomePage',
-		component: Home
-	},
-	{
-		path: '/home',
-=======
 		path: '/home',
 		name: 'NewPage',
 		component: Home
 	},
 	{
 		path: '/',
->>>>>>> 2b003cb12fb3616c7941adf1f56394ee7b26b8c1
 		name: 'HomePage',
 		component: App
 	}
