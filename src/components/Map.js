@@ -33,6 +33,7 @@ class MapDirectionsRenderer extends React.Component {
 
 	render() {
 		if (this.state.error) {
+			console.log(this.state.error);
 			return <h1>{this.state.error}</h1>;
 		}
 		return (
@@ -48,6 +49,9 @@ const Map = withScriptjs(
 		<GoogleMap
 			defaultCenter={props.defaultCenter}
 			defaultZoom={props.defaultZoom}
+			onLoad={() => {
+				console.log('Helooooo');
+			}}
 		>
 			{props.markers.map((marker, index) => {
 				const position = { lat: marker.latitude, lng: marker.longitude };

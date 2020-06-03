@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Home from './Home.js';
-import { Link } from 'react-router-dom';
+import { Link, Switch, Route } from 'react-router-dom';
 import { render } from 'react-dom';
 import Map from '../components/Map.js';
 const googleMapsApiKey = 'AIzaSyCskdHri23YrHhmv4dJ5zwKm6WpCXPY9BE';
@@ -14,17 +14,13 @@ export default class App extends Component {
 	}
 	render() {
 		return (
-			<>
-				<div className="Page-wrapper">
-					<Link to="/home">Go to Other Page</Link>
-					<h2>This is the home page</h2>
-					<Home />
-					<AppMap defaultZoom={7} />
-				</div>
-				<div className="Page-wrapper">
-					<AppMap defaultZoom={7} />
-				</div>
-			</>
+			<div className="Page-wrapper">
+				<Link to="/home">Go to Other Page</Link>
+				<h2>This is the home page</h2>
+				<Home />
+				<h2>This is the home page</h2>
+				<AppMap defaultZoom={7} />
+			</div>
 		);
 	}
 }
@@ -75,16 +71,20 @@ class AppMap extends React.Component {
 					'&libraries=geometry,drawing,places'
 				}
 				markers={this.state.places}
-				loadingElement={loadingElement || <div style={{ height: `100%` }} />}
-				containerElement={
-					containerElement || <div style={{ height: `100vh` }} />
+				loadingElement={
+					loadingElement || <div style={{ height: `500px`, width: `500px` }} />
 				}
-				mapElement={mapElement || <div style={{ height: `100%` }} />}
+				containerElement={
+					containerElement || (
+						<div style={{ height: `500px`, width: `500px` }} />
+					)
+				}
+				mapElement={
+					mapElement || <div style={{ height: `500px`, width: `500px` }} />
+				}
 				defaultCenter={defaultCenter || { lat: 25.798939, lng: -80.291409 }}
 				defaultZoom={defaultZoom || 11}
 			/>
 		);
 	}
 }
-
-render(<AppMap defaultZoom={7} />, document.getElementById('root'));
