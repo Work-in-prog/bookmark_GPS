@@ -6,12 +6,12 @@ import Home from './components/Home';
 import App from './components/App';
 const routes = [
 	{
-		path: '/',
-		name: 'HomePage',
+		path: '/home',
+		name: 'NewPage',
 		component: Home
 	},
 	{
-		path: '/home',
+		path: '/',
 		name: 'HomePage',
 		component: App
 	}
