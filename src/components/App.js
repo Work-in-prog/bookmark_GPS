@@ -25,7 +25,9 @@ export default class App extends Component {
 
 	handleLogin = event => {
 		event.preventDefault();
+		//make .post dynamic for heroku//
 		axios
+
 			.post('http://localhost:8080/users/login', {
 				email: this.state.email,
 				password: this.state.password
