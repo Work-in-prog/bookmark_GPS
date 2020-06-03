@@ -14,7 +14,7 @@ export default class App extends Component {
 			name: 'Arthur',
 			isLoggedIn: false,
 			email: '',
-			password: ''
+			password: '' 
 		};
 	}
 	handleChange = event => {
