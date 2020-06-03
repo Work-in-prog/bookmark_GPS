@@ -3,6 +3,8 @@
 // Gulp exports an object with many methods
 // task , watch, src and pipe will be the main ones we use today but see the gulp docs to expand and also see how you might refactor it to no longer use task and maybe use exports, series and parallells
 // i don't use them here because they are more magic and make it harder to show what's happening
+const nodemon = require('gulp-nodemon');
+
 const gulp = require('gulp');
 
 // Explanation for Students ---- This is for compiling SASS, we haven't learned SASS yet but this is as good a chance as any to to talk about how we could compile it.
@@ -23,17 +25,28 @@ var exec = require('child_process').exec;
 
 // Explanation for Students ---- This is the brain child for our self made development server
 
+
 gulp.task('default', (cb) => {
-	browserSync.init({
-		server: './public',
-		notify: true,
-		open: true //change this to true if you want the broser to open automatically
-	});
 	exec('npm run dev:webpack', function(err, stdout, stderr) {
 		console.log(stdout);
 		console.log(stderr);
 		cb(err);
 	});
+	nodemon({
+		script: 'server.js',
+		env: {
+			'NODE_ENV': 'development'
+		}
+	})
+	//add nodemon here //
+	browserSync.init({
+		proxy: {
+			target: 'http://locahost:8080',
+			ws: true
+		},
+		serveStatic: ['.', './public']
+	});
+	
 	gulp.watch('./src/scss/**/*',  gulp.task('styles'));
 	gulp.watch('./src/components/**/*', gulp.task('webpack'));
 	gulp.watch('./src/main.js',gulp.task('webpack'))
