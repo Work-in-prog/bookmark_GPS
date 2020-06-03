@@ -1,38 +1,13 @@
 import React, { Component } from 'react';
 // import ReactDOM from 'react-dom';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
-	constructor() {
-		super();
-		this.state = {
-			cardText: ''
-		};
-	}
-	addACard = element => {
-		let cardText = window.prompt('Enter Your Text', 'enter text here');
-		const list = document.getElementById(element);
-		const card = document.createElement('li');
-		card.innerText = cardText;
-		list.appendChild(card);
-		return;
-	};
-	addWinnie = event => {
-		return this.addACard('winnie-list');
-	};
-	addBob = event => {
-		return this.addACard('bob-list');
-	};
-	addThomas = event => {
-		return this.addACard('thomas-list');
-	};
-	addGeorge = event => {
-		return this.addACard('george-list');
-	};
 	render() {
 		return (
+<<<<<<< HEAD
 			<div className="Page">
-				<Link to='/'>Go Back</Link>
+				<Link to="/">Go Back</Link>
 				<div className="column">
 					<h2 className="heading winnie">Winnie</h2>
 					<ul id="winnie-list">
@@ -66,6 +41,12 @@ export default class Home extends Component {
 					<button onClick={this.addGeorge}>Add A Card</button>
 				</div>
 			</div>
+=======
+			<h1>
+				New Page
+				<Link to="/">Go Back</Link>
+			</h1>
+>>>>>>> 2b003cb12fb3616c7941adf1f56394ee7b26b8c1
 		);
 	}
 }
