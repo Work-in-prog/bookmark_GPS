@@ -5,6 +5,8 @@ const app = express()
 const db = mongoose.connection
 const path = require('path')
 const passport = require('./config/passport')()
+const parser = require('body-parser');
+const cors = require('cors');
 
 // Environment Variables
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/bookmarkgpscrud'
