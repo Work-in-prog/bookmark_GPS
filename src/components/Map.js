@@ -13,7 +13,10 @@ class MapDirectionsRenderer extends React.Component {
 		directions: null,
 		error: null,
 		longitude: null,
-		latitude: null
+		latitude: null,
+		travelMode: 'DRIVING',
+		origin: '',
+		destination: ''
 	};
 
 	getLocation() {
