@@ -4,6 +4,7 @@ import Listing from './Listing';
 import { Link, Switch, Route } from 'react-router-dom';
 import { render } from 'react-dom';
 import Map from '../components/Map.js';
+
 import axios from 'axios';
 
 const googleMapsApiKey = 'AIzaSyCskdHri23YrHhmv4dJ5zwKm6WpCXPY9BE';
@@ -62,7 +63,7 @@ export default class App extends Component {
 				)}
 				<Home />
 				<h2>This is the home page</h2>
-				<AppMap defaultZoom={7} />
+				<AppMap defaultZoom={4} />
 			</div>
 		);
 	}
@@ -107,27 +108,35 @@ class AppMap extends React.Component {
 		} = this.props;
 
 		return (
-			<Map
-				googleMapURL={
-					'https://maps.googleapis.com/maps/api/js?key=' +
-					googleMapsApiKey +
-					'&libraries=geometry,drawing,places'
-				}
-				markers={this.state.places}
-				loadingElement={
-					loadingElement || <div style={{ height: `500px`, width: `500px` }} />
-				}
-				containerElement={
-					containerElement || (
-						<div style={{ height: `500px`, width: `500px` }} />
-					)
-				}
-				mapElement={
-					mapElement || <div style={{ height: `500px`, width: `500px` }} />
-				}
-				defaultCenter={defaultCenter || { lat: 25.798939, lng: -80.291409 }}
-				defaultZoom={defaultZoom || 11}
-			/>
+			<>
+				<Map
+					googleMapURL={
+						'https://maps.googleapis.com/maps/api/js?key=' +
+						googleMapsApiKey +
+						'&libraries=geometry,drawing,places'
+					}
+					markers={this.state.places}
+					loadingElement={
+						loadingElement || (
+							<div style={{ height: `500px`, width: `700px` }} />
+						)
+					}
+					containerElement={
+						containerElement || (
+							<div style={{ height: `500px`, width: `700px` }} />
+						)
+					}
+					mapElement={
+						mapElement || <div style={{ height: `500px`, width: `700px` }} />
+					}
+					center={{
+						lat: 0,
+						lng: -180
+					}}
+					defaultCenter={defaultCenter || { lat: 37.0902405, lng: -95.7128906 }}
+					defaultZoom={defaultZoom}
+				/>
+			</>
 		);
 	}
 }

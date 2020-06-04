@@ -10,7 +10,6 @@ I will base all my tutorials on this Starter Kit.
 
 # Who Am I?
 
-![arthurbernierjr.com](http://progressandfortune.com/smac_images/profile.jpg)
 
 I am Arthur Bernier Jr. I work as freelance fullstack web developer and attraction marketing consultant specializing in supporting e-commerce brands,
 subscription box sites, social activists, religious/non-profit leaders and creative entrepreneurs(i.e. barbers, artists, musicians, stylists, models and photographers).
