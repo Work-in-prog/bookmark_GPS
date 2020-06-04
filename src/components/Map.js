@@ -60,10 +60,6 @@ const Map = withScriptjs(
 				const position = { lat: marker.latitude, lng: marker.longitude };
 				return <Marker key={index} position={position} />;
 			})}
-			<MapDirectionsRenderer
-				places={props.markers}
-				travelMode={google.maps.TravelMode.DRIVING}
-			/>
 		</GoogleMap>
 	))
 );
