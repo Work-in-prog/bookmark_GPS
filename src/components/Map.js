@@ -52,9 +52,6 @@ const Map = withScriptjs(
 		<GoogleMap
 			defaultCenter={props.defaultCenter}
 			defaultZoom={props.defaultZoom}
-			onLoad={() => {
-				console.log('Helooooo');
-			}}
 		>
 			{props.markers.map((marker, index) => {
 				const position = { lat: marker.latitude, lng: marker.longitude };
