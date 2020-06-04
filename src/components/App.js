@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Home from './Home.js';
+import Listing from './Listing';
 import { Link, Switch, Route } from 'react-router-dom';
 import { render } from 'react-dom';
 import Map from '../components/Map.js';
@@ -44,7 +45,7 @@ export default class App extends Component {
 		return (
 			<div className="Page-wrapper">
 				<Link to="/home">Go to Other Page</Link>
-				<h2>This is the home page</h2>
+				<h2>This is the home page.</h2>
 				<form onSubmit={this.handleLogin}>
 					<input id="email" type="email" onChange={this.handleChange}></input>
 					<input
