@@ -1,8 +1,9 @@
 const mongoose = require('../db/connection')
 
 const bookmarkSchema = new mongoose.Schema({
-    address: String,
-    complete: Boolean
+    latitude: Number,
+    longitude: Number,
+    direction: String
 })
 
 mongoose.model('Bookmark', bookmarkSchema);
