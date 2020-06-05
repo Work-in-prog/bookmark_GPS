@@ -4,7 +4,6 @@ import { Switch, Router, Route } from 'react-router';
 import { createBrowserHistory } from 'history';
 import Home from './components/Home';
 import App from './components/App';
-import Log from './components/Log';
 
 const routes = [
 	{
