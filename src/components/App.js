@@ -5,13 +5,14 @@ import { render } from 'react-dom';
 import Map from '../components/Map.js';
 import axios from 'axios';
 
+
 const googleMapsApiKey = 'AIzaSyCskdHri23YrHhmv4dJ5zwKm6WpCXPY9BE';
 
 export default class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			name: 'Arthur',
+			name: 'test',
 			isLoggedIn: false,
 			email: '',
 			password: ''
@@ -54,6 +55,7 @@ export default class App extends Component {
 					></input>
 					<input type="submit" value="login"></input>
 				</form>
+				<Log />
 				{this.state.isLoggedIn ? (
 					<h1>We are logged in</h1>
 				) : (
@@ -127,6 +129,158 @@ class AppMap extends React.Component {
 				defaultCenter={defaultCenter || { lat: 25.798939, lng: -80.291409 }}
 				defaultZoom={defaultZoom || 11}
 			/>
+		);
+	}
+}
+
+class Log extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isLoggedIn: true,
+			isRegistered: false
+		};
+	}
+	showRegisterBox() {
+		this.setState({ isRegistered: true, isLoggedIn: false });
+	}
+
+	showLoginBox() {
+		this.setState({ isLoggedIn: true, isRegistered: false });
+	}
+	render() {
+		return (
+			<div className="root-container">
+				<div className="box-controller">
+					<div
+						className={
+							'controller' +
+							(this.state.isLoggedIn ? 'selected-controller' : '')
+						}
+						onClick={this.showLoginBox.bind(this)}
+					>
+						Login
+					</div>
+					<div
+						className={
+							'controller' +
+							(this.state.isRegistered ? 'selected-controller' : '')
+						}
+						onClick={this.showRegisterBox.bind(this)}
+					>
+						Register
+					</div>
+				</div>
+
+				<div className="box-container">
+					{this.state.isLoggedIn && <LoginBox />}
+					{this.state.isRegistered && <RegisterBox />}
+				</div>
+			</div>
+		);
+	}
+}
+
+class LoginBox extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
+	submitLogin = e => {
+		this;
+	};
+
+	render() {
+		return (
+			<div className="inner-container">
+				<div className="header">Login</div>
+				<div className="box">
+					<div className="input-group">
+						<label htmlFor="username">Username</label>
+						<input
+							type="text"
+							name="username"
+							className="login-input"
+							placeholder="Username"
+						/>
+					</div>
+
+					<div className="input-group">
+						<label htmlFor="password">Password</label>
+						<input
+							type="password"
+							name="password"
+							className="login-input"
+							placeholder="Password"
+						/>
+					</div>
+
+					<button
+						type="button"
+						className="login-btn"
+						onClick={this.submitLogin.bind(this)}
+					>
+						Login
+					</button>
+				</div>
+			</div>
+		);
+	}
+}
+
+class RegisterBox extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
+	submitRegister = e => {
+		this;
+	};
+
+	render() {
+		return (
+			<div className="inner-container">
+				<div className="header">Register</div>
+				<div className="box">
+					<div className="input-group">
+						<label htmlFor="username">Username</label>
+						<input
+							type="text"
+							name="username"
+							className="login-input"
+							placeholder="Username"
+						/>
+					</div>
+
+					<div className="input-group">
+						<label htmlFor="email">Email</label>
+						<input
+							type="text"
+							name="email"
+							className="login-input"
+							placeholder="Email"
+						/>
+					</div>
+
+					<div className="input-group">
+						<label htmlFor="password">Password</label>
+						<input
+							type="password"
+							name="password"
+							className="login-input"
+							placeholder="Password"
+						/>
+					</div>
+
+					<button
+						type="button"
+						className="login-btn"
+						onClick={this.submitRegister.bind(this)}
+					>
+						Register
+					</button>
+				</div>
+			</div>
 		);
 	}
 }
