@@ -56,13 +56,12 @@ export default class App extends Component {
 					<input type="submit" value="login"></input>
 				</form>
 				{this.state.isLoggedIn ? (
-					<h1>We are logged in</h1>
+					((<h1>We are logged in</h1>), (<AppMap defaultZoom={4} />))
 				) : (
 					<h1>Sorry you are not logged in</h1>
 				)}
 				<Home />
 				<h2>This is the home page</h2>
-				<AppMap defaultZoom={4} />
 			</div>
 		);
 	}
