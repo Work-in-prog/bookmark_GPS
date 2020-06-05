@@ -91,7 +91,7 @@ export default class Listing extends React.Component {
 	handleSubmit = event => {
 		event.preventDefault();
 		console.log('Listing Component handleSubmit Accessed');
-		fetch('/', {
+		fetch('/bookmarks', {
 			body: JSON.stringify({
 				address: this.state.address,
 				lat: this.state.lat,
@@ -111,7 +111,7 @@ export default class Listing extends React.Component {
 					lat: 0,
 					lon: 0
 				});
-				console.log(newBookmark);
+				console.log(this.state);
 			});
 	};
 

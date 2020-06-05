@@ -27,4 +27,23 @@ router.put('/:id', (req, res) => {
     })
 })
 
+seedData = [
+    {
+        address:'my house',
+        lat:'100',
+        lon:'-100'
+    },
+    {
+        address:'your house',
+        lat:'20',
+        lon:'45'
+    }
+]
+
+router.post('/seed',(req,res)=>{
+    Bookmarks.create(seedData,(err,newBookmark)=>{
+        res.json(newBookmark);
+    })
+    console.log("Seed Data Route Accessed")
+})
 module.exports = router;
