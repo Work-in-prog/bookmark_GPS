@@ -15,8 +15,14 @@ export default class App extends Component {
 			name: 'Arthur',
 			isLoggedIn: false,
 			email: '',
-			password: ''
+			password: '',
+			currentPin: {
+				lat: 0,
+				lon: 0,
+				address: ''
+			}
 		};
+		this.scrollToBookmark = this.scrollToBookmark.bind(this);
 	}
 	handleChange = event => {
 		this.setState({
@@ -41,10 +47,25 @@ export default class App extends Component {
 			})
 			.catch(err => console.error(err));
 	};
+
+	scrollToBookmark(lat, lon, address) {
+		//get info from a bookmark and send it to the map
+		// console.log('scrollToBookmark() was called', lat, lon, address);
+		this.setState({
+			currentPin: {
+				lat: lat,
+				lon: lon,
+				address: address
+			}
+		});
+	}
+
 	render() {
 		return (
 			<div className="Page-wrapper">
 				<Link to="/home">Go to Other Page</Link>
+				<Link to="/listing">See All Bookmarks</Link>
+
 				<h2>This is the home page.</h2>
 				<form onSubmit={this.handleLogin}>
 					<input id="email" type="email" onChange={this.handleChange}></input>
@@ -62,7 +83,17 @@ export default class App extends Component {
 				)}
 				<Home />
 				<h2>This is the home page</h2>
-				<AppMap defaultZoom={7} />
+				<AppMap
+					defaultZoom={7}
+					defaultCenter={{
+						lat: this.state.currentPin.lat,
+						lng: this.state.currentPin.lon
+					}}
+				/>
+				<hr />
+				<h1>{this.state.currentPin.address}</h1>
+				<hr />
+				<Listing scrollToBookmark={this.scrollToBookmark} />
 			</div>
 		);
 	}

@@ -1,20 +1,29 @@
 import React from 'react';
-import axios from 'axios';
+//import '../../public/css/Listing.css';
 
 const googleMapsApiKey = 'AIzaSyCskdHri23YrHhmv4dJ5zwKm6WpCXPY9BE';
 
 //div for displaying an individual bookmark
 class BookmarkCard extends React.Component {
-	// state={
-	//     lat:this.props.lat,
-	//     lon:this.props.lon,
-	//     address:this.props.address
-	// }
+	constructor() {
+		super();
+		this.state = {};
+	}
+
+	STB() {
+		this.props.scrollToBookmark(lat, lon, address);
+		console.log('STB() was called');
+	}
 
 	render() {
-		const { lat, lon, address } = this.props;
+		const { lat, lon, address, scrollToBookmark } = this.props;
 		return (
-			<div className="bookmark-box">
+			<div
+				className="bookmark-box"
+				onClick={() => {
+					scrollToBookmark(lat, lon, address);
+				}}
+			>
 				<p>{address}</p>
 				<p>
 					Lat:{lat}, Lon:{lon}
@@ -40,19 +49,27 @@ export default class Listing extends React.Component {
 
 	componentDidMount() {
 		//set pinList to the masterlist received from database
+		console.log('Listing mounted', this.props);
 	}
 
 	render() {
+		const { scrollToBookmark } = this.props;
 		return (
 			//a box to contain all the bookmarks
 			<div>
 				<h1>This is a test card</h1>
 				{/* a test bookmark */}
 				<BookmarkCard
-					lat={10}
-					lon={20}
+					lat={80}
+					lon={-20}
 					address={'123 Main Street USA'}
-					scrollToBookmark={this.state.scrollToBookmark}
+					scrollToBookmark={scrollToBookmark}
+				/>
+				<BookmarkCard
+					lat={-80}
+					lon={20}
+					address={'456 Who Knows Where'}
+					scrollToBookmark={scrollToBookmark}
 				/>
 				{/* a list of procedurally generated bookmarks */}
 				{this.state.bookmarksList.map((bookmark, index) => {
@@ -61,7 +78,7 @@ export default class Listing extends React.Component {
 							lat={bookmark.lat}
 							lon={bookmark.lon}
 							address={bookmark.addess}
-							scrollToBookmark={this.state.scrollToBookmark}
+							scrollToBookmark={scrollToBookmark}
 						/>
 					);
 				})}
