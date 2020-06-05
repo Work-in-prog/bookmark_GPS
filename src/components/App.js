@@ -46,23 +46,20 @@ export default class App extends Component {
 		return (
 			<div className="Page-wrapper">
 				<Link to="/home">Go to Other Page</Link>
-				<h2>This is the home page.</h2>
-				<form onSubmit={this.handleLogin}>
-					<input id="email" type="email" onChange={this.handleChange}></input>
-					<input
-						id="password"
-						type="password"
-						onChange={this.handleChange}
-					></input>
-					<input type="submit" value="login"></input>
-				</form>
+
 				{this.state.isLoggedIn ? (
 					((<h1>We are logged in</h1>), (<AppMap defaultZoom={4} />))
 				) : (
-					<h1>Sorry you are not logged in</h1>
+					<form onSubmit={this.handleLogin}>
+						<input id="email" type="email" onChange={this.handleChange}></input>
+						<input
+							id="password"
+							type="password"
+							onChange={this.handleChange}
+						></input>
+						<input type="submit" value="login"></input>
+					</form>
 				)}
-				<Home />
-				<h2>This is the home page</h2>
 			</div>
 		);
 	}
