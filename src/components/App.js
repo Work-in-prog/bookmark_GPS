@@ -24,6 +24,9 @@ export default class App extends Component {
 			[event.target.id]: event.target.value
 		});
 	};
+	logout() {
+		this.setState({ isLoggedIn: false });
+	}
 
 	handleLogin = event => {
 		event.preventDefault();
@@ -45,26 +48,52 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className="Page-wrapper">
-				<Link to="/home">Go to Other Page</Link>
+				{/* <Link to="/home">Go to Other Page</Link> */}
 
 				{this.state.isLoggedIn ? (
-					((<h1>We are logged in</h1>), (<AppMap defaultZoom={4} />))
+					<Main />
 				) : (
-					<form onSubmit={this.handleLogin}>
-						<input id="email" type="email" onChange={this.handleChange}></input>
-						<input
-							id="password"
-							type="password"
-							onChange={this.handleChange}
-						></input>
-						<input type="submit" value="login"></input>
-					</form>
+					<div className="container">
+						<form onSubmit={this.handleLogin}>
+							<div className="form-group">
+								<label>Email address</label>
+								<input
+									id="email"
+									type="email"
+									onChange={this.handleChange}
+								></input>
+							</div>
+							<div className="form-group">
+								<label>Password</label>
+								<input
+									id="password"
+									type="password"
+									onChange={this.handleChange}
+								></input>
+							</div>
+							<input type="submit" value="login"></input>
+						</form>
+					</div>
 				)}
 			</div>
 		);
 	}
 }
 
+///-----------------------------Main Page -------------------------------/////////
+class Main extends React.Component {
+	render() {
+		return (
+			<>
+				<h1>Main Page</h1>
+				<AppMap defaultZoom={4} />
+				<button onClick={() => window.location.reload(false)}>Log out</button>
+			</>
+		);
+	}
+}
+
+///----------------------------------------------------------------------/////////
 class AppMap extends React.Component {
 	state = {
 		places: [
