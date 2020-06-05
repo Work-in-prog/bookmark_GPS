@@ -84,9 +84,14 @@ export default class Listing extends React.Component {
 			});
 	};
 
+	handleChange = event => {
+		this.setState({ [event.target.id]: event.target.value });
+	};
+
 	handleSubmit = event => {
 		event.preventDefault();
-		fetch('/bookmarks', {
+		console.log('Listing Component handleSubmit Accessed');
+		fetch('/', {
 			body: JSON.stringify({
 				address: this.state.address,
 				lat: this.state.lat,
@@ -106,6 +111,7 @@ export default class Listing extends React.Component {
 					lat: 0,
 					lon: 0
 				});
+				console.log(newBookmark);
 			});
 	};
 
@@ -136,10 +142,16 @@ export default class Listing extends React.Component {
 			<div>
 				{/* //entry form */}
 				<div>
+					<h3>Entry Form</h3>
 					<form onSubmit={this.handleSubmit}>
 						<label htmlFor="address">Address</label>
-						<input type="text" value={this.state.address} id="address"></input>
-						<input type="submit">Sumbit</input>
+						<input
+							type="text"
+							value={this.state.address}
+							onChange={this.handleChange}
+							id="address"
+						/>
+						<input type="submit" />
 					</form>
 				</div>
 				{/* //a box to contain all the bookmarks */}
@@ -159,7 +171,7 @@ export default class Listing extends React.Component {
 						scrollToBookmark={scrollToBookmark}
 					/>
 					{/* a list of procedurally generated bookmarks */}
-					{this.state.bookmarksList.map((bookmark, index) => {
+					{this.state.bookmarks.map((bookmark, index) => {
 						return (
 							<BookmarkCard
 								lat={bookmark.lat}

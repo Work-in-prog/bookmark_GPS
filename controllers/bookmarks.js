@@ -18,6 +18,7 @@ router.post('/', (req, res) => {
     Bookmarks.create(req.body, (err, newBookmark) => {
         res.json(newBookmark);
     });
+    console.log("Post Route Accessed")
 })
 
 router.put('/:id', (req, res) => {

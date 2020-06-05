@@ -50,31 +50,31 @@ export default class App extends Component {
 
 	scrollToBookmark(lat, lon, address) {
 		//get info from a bookmark and send it to the map
-		// console.log('scrollToBookmark() was called', lat, lon, address);
-		this.setState({
-			currentPin: {
-				lat: lat,
-				lon: lon,
-				address: address
-			}
-		});
+		console.log('scrollToBookmark() was called', lat, lon, address);
+		// this.setState({
+		// 	currentPin: {
+		// 		lat: lat,
+		// 		lon: lon,
+		// 		address: address
+		// 	}
+		// });
 
-		const myLatlng = new google.maps.LatLng(lat, lon);
-		const mapOptions = {
-			zoom: 4,
-			center: myLatlng
-		};
-		const map = new google.maps.Map(
-			document.getElementById('mainmap'),
-			mapOptions
-		);
+		// const myLatlng = new google.maps.LatLng(lat, lon);
+		// const mapOptions = {
+		// 	zoom: 4,
+		// 	center: myLatlng
+		// };
+		// const map = new google.maps.Map(
+		// 	document.getElementById('mainmap'),
+		// 	mapOptions
+		// );
 
-		var marker = new google.maps.Marker({
-			position: myLatlng,
-			title: 'Hello World!'
-		});
+		// var marker = new google.maps.Marker({
+		// 	position: myLatlng,
+		// 	title: 'Hello World!'
+		// });
 
-		marker.setMap(map);
+		// marker.setMap(map);
 	}
 
 	render() {

@@ -4,7 +4,7 @@ const bookmarkSchema = new mongoose.Schema({
     address: String,
     complete: Boolean,
     lat: Number,
-    lon: Number,
+    lon: Number
 })
 
 mongoose.model('Bookmark', bookmarkSchema);
