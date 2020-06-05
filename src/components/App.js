@@ -58,6 +58,23 @@ export default class App extends Component {
 				address: address
 			}
 		});
+
+		const myLatlng = new google.maps.LatLng(lat, lon);
+		const mapOptions = {
+			zoom: 4,
+			center: myLatlng
+		};
+		const map = new google.maps.Map(
+			document.getElementById('mainmap'),
+			mapOptions
+		);
+
+		var marker = new google.maps.Marker({
+			position: myLatlng,
+			title: 'Hello World!'
+		});
+
+		marker.setMap(map);
 	}
 
 	render() {
@@ -84,6 +101,7 @@ export default class App extends Component {
 				<Home />
 				<h2>This is the home page</h2>
 				<AppMap
+					id="mainmap"
 					defaultZoom={7}
 					defaultCenter={{
 						lat: this.state.currentPin.lat,

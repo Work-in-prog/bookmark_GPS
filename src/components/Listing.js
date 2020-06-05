@@ -7,7 +7,12 @@ const googleMapsApiKey = 'AIzaSyCskdHri23YrHhmv4dJ5zwKm6WpCXPY9BE';
 class BookmarkCard extends React.Component {
 	constructor() {
 		super();
-		this.state = {};
+		this.state = {
+			address: '',
+			lat: 0,
+			lon: 0,
+			bookmarks: []
+		};
 	}
 
 	STB() {
@@ -16,7 +21,15 @@ class BookmarkCard extends React.Component {
 	}
 
 	render() {
-		const { lat, lon, address, scrollToBookmark } = this.props;
+		const {
+			lat,
+			lon,
+			address,
+			scrollToBookmark,
+			deleteBookmark,
+			id,
+			index
+		} = this.props;
 		return (
 			<div
 				className="bookmark-box"
@@ -28,6 +41,14 @@ class BookmarkCard extends React.Component {
 				<p>
 					Lat:{lat}, Lon:{lon}
 				</p>
+				<button>Edit</button>
+				<button
+					onClick={() => {
+						deleteBookmark(id, index);
+					}}
+				>
+					Delete
+				</button>
 			</div>
 		);
 	}
@@ -43,9 +64,65 @@ export default class Listing extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			bookmarksList: []
+			bookmarks: [],
+			address: '',
+			lat: 0,
+			lon: 0
 		};
+		this.deleteBookmark = this.deleteBookmark.bind(this);
 	}
+
+	componentDidMount() {
+		this.getData();
+	}
+
+	getData = () => {
+		fetch('/bookmarks')
+			.then(response => response.json())
+			.then(data => {
+				this.setState({ bookmarks: data });
+			});
+	};
+
+	handleSubmit = event => {
+		event.preventDefault();
+		fetch('/bookmarks', {
+			body: JSON.stringify({
+				address: this.state.address,
+				lat: this.state.lat,
+				lon: this.state.lon
+			}),
+			method: 'POST',
+			headers: {
+				Accept: 'application/json, text/plain, */*',
+				'Content-Type': 'application/json'
+			}
+		})
+			.then(response => response.json())
+			.then(newBookmark => {
+				this.setState({
+					bookmarks: [newBookmark, ...this.state.bookmarks],
+					address: '',
+					lat: 0,
+					lon: 0
+				});
+			});
+	};
+
+	deleteBookmark = (id, index) => {
+		fetch(`/bookmarks/${id}`, {
+			method: 'DELETE'
+		}).then(response => {
+			this.setState({
+				bookmarks: [
+					...this.state.bookmarks.slice(0, index),
+					...this.state.bookmarks.slice(index + 1)
+				]
+			});
+		});
+	};
+
+	updateBookmark;
 
 	componentDidMount() {
 		//set pinList to the masterlist received from database
@@ -54,34 +131,48 @@ export default class Listing extends React.Component {
 
 	render() {
 		const { scrollToBookmark } = this.props;
+		const deleteBookmark = this.deleteBookmark;
 		return (
-			//a box to contain all the bookmarks
 			<div>
-				<h1>This is a test card</h1>
-				{/* a test bookmark */}
-				<BookmarkCard
-					lat={80}
-					lon={-20}
-					address={'123 Main Street USA'}
-					scrollToBookmark={scrollToBookmark}
-				/>
-				<BookmarkCard
-					lat={-80}
-					lon={20}
-					address={'456 Who Knows Where'}
-					scrollToBookmark={scrollToBookmark}
-				/>
-				{/* a list of procedurally generated bookmarks */}
-				{this.state.bookmarksList.map((bookmark, index) => {
-					return (
-						<BookmarkCard
-							lat={bookmark.lat}
-							lon={bookmark.lon}
-							address={bookmark.addess}
-							scrollToBookmark={scrollToBookmark}
-						/>
-					);
-				})}
+				{/* //entry form */}
+				<div>
+					<form onSubmit={this.handleSubmit}>
+						<label htmlFor="address">Address</label>
+						<input type="text" value={this.state.address} id="address"></input>
+						<input type="submit">Sumbit</input>
+					</form>
+				</div>
+				{/* //a box to contain all the bookmarks */}
+				<div>
+					<h1>This is a test card</h1>
+					{/* a test bookmark */}
+					<BookmarkCard
+						lat={80}
+						lon={-20}
+						address={'123 Main Street USA'}
+						scrollToBookmark={scrollToBookmark}
+					/>
+					<BookmarkCard
+						lat={-80}
+						lon={20}
+						address={'456 Who Knows Where'}
+						scrollToBookmark={scrollToBookmark}
+					/>
+					{/* a list of procedurally generated bookmarks */}
+					{this.state.bookmarksList.map((bookmark, index) => {
+						return (
+							<BookmarkCard
+								lat={bookmark.lat}
+								lon={bookmark.lon}
+								address={bookmark.addess}
+								scrollToBookmark={scrollToBookmark}
+								deleteBookmark={deleteBookmark}
+								id={bookmark._id}
+								index={index}
+							/>
+						);
+					})}
+				</div>
 			</div>
 		);
 	}
