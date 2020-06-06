@@ -8,7 +8,7 @@ let endpoint;
 if(process.env.NODE_ENV === "development") {
 	endpoint = 'http://localhost:8080/users/login'
 } else {
-	endpoint = 'users.login'
+	endpoint = 'users/login'
 }
 
 import axios from 'axios';
