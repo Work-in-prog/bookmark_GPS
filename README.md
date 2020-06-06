@@ -31,4 +31,4 @@ Working in groups has challenges. Trying work around everyone's schedule is hard
 ## logo
 ![](https://github.com/krock07/bookmark_GPS/blob/dev/images/gps-01.png?raw=true)
 ## Home page
-![](https://raw.githubusercontent.com/krock07/datenight/master/public/images/Screen%20Shot%202020-05-09%20at%2012.07.58%20AM.png)
+![](https://github.com/krock07/bookmark_GPS/blob/dev/images/layout1.png?raw=true)
