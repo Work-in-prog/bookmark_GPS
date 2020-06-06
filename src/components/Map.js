@@ -52,10 +52,13 @@ const Map = withScriptjs(
 		<GoogleMap
 			defaultCenter={props.defaultCenter}
 			defaultZoom={props.defaultZoom}
+			options={props.options}
 		>
 			{props.markers.map((marker, index) => {
 				const position = { lat: marker.latitude, lng: marker.longitude };
-				return <Marker key={index} position={position} />;
+				return (
+					<Marker key={index} name={'current location'} position={position} />
+				);
 			})}
 		</GoogleMap>
 	))

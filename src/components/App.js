@@ -4,7 +4,7 @@ import Listing from './Listing';
 import { Link, Switch, Route } from 'react-router-dom';
 import { render } from 'react-dom';
 import Map from '../components/Map.js';
-
+import Mapstyle from './Mapstyle.js';
 import axios from 'axios';
 
 const googleMapsApiKey = 'AIzaSyCskdHri23YrHhmv4dJ5zwKm6WpCXPY9BE';
@@ -53,28 +53,40 @@ export default class App extends Component {
 				{this.state.isLoggedIn ? (
 					<Main />
 				) : (
-					<div className="container">
-						<form onSubmit={this.handleLogin}>
-							<div className="form-group">
-								<label>Email address</label>
-								<input
-									id="email"
-									type="email"
-									onChange={this.handleChange}
-								></input>
+					<div className="wrapper fadeInDown">
+						<div id="formContent">
+							<div className="fadeIn first">
+								<img src="./img/logo.png" id="icon" alt="User Icon" />
 							</div>
-							<div className="form-group">
-								<label>Password</label>
-								<input
-									id="password"
-									type="password"
-									onChange={this.handleChange}
-								></input>
-							</div>
-							<div className="input">
-								<input type="submit" value="login"></input>
-							</div>
-						</form>
+							<form onSubmit={this.handleLogin}>
+								<div className="form-col-md-6 login-form-1">
+									<input
+										placeholder="Login"
+										className="fadeIn second"
+										id="email"
+										type="text"
+										onChange={this.handleChange}
+									></input>
+								</div>
+								<div className="form-group">
+									<input
+										placeholder="Password"
+										className="fadeIn third"
+										id="password"
+										type="password"
+										onChange={this.handleChange}
+									></input>
+								</div>
+								<div className="input">
+									<input
+										id="inputPassword2"
+										class="fadeIn fourth text-muted"
+										type="submit"
+										value="login"
+									></input>
+								</div>
+							</form>
+						</div>
 					</div>
 				)}
 			</div>
@@ -134,6 +146,10 @@ class AppMap extends React.Component {
 			defaultZoom
 		} = this.props;
 
+		const options = {
+			styles: Mapstyle
+		};
+
 		return (
 			<>
 				<Map
@@ -145,16 +161,16 @@ class AppMap extends React.Component {
 					markers={this.state.places}
 					loadingElement={
 						loadingElement || (
-							<div style={{ height: `500px`, width: `700px` }} />
+							<div style={{ height: `500px`, width: `1000px` }} />
 						)
 					}
 					containerElement={
 						containerElement || (
-							<div style={{ height: `500px`, width: `700px` }} />
+							<div style={{ height: `500px`, width: `1000px` }} />
 						)
 					}
 					mapElement={
-						mapElement || <div style={{ height: `500px`, width: `700px` }} />
+						mapElement || <div style={{ height: `500px`, width: `1000px` }} />
 					}
 					center={{
 						lat: 0,
@@ -162,6 +178,7 @@ class AppMap extends React.Component {
 					}}
 					defaultCenter={defaultCenter || { lat: 37.0902405, lng: -95.7128906 }}
 					defaultZoom={defaultZoom}
+					options={options}
 				/>
 			</>
 		);
