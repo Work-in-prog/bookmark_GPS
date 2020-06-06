@@ -26,3 +26,9 @@ Working in groups has challenges. Trying work around everyone's schedule is hard
 - Mongo DB
 - Express.JS
 - Google Map API
+
+## Screen Shots
+## logo
+![](https://raw.githubusercontent.com/krock07/datenight/master/public/images/DATE-NIGHT.png)
+## Index page
+![](https://raw.githubusercontent.com/krock07/datenight/master/public/images/Screen%20Shot%202020-05-09%20at%2012.07.58%20AM.png)
