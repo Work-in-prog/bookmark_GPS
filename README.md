@@ -1,49 +1,23 @@
-# Big Poppa Code React Starter Kit
-This Starter Kit is being created for New Web Developers that want to get started with react
-
-Most people use a CLI Tool like Vue-Cli or Create React App and no idea what these things are doing
-
-The goal of this is for it to be a tool that let's you learn JS at a new level because you have access to
-everything under the hood and no opinionated set up
-
-I will base all my tutorials on this Starter Kit.
+# Bookmark GPS
+What if you could save all of your favorite locations you have been to all over the world in one place? That would be awesome right? Well look no further Bookmark GPS is here to save the day.  
 
 
 
-# My Favorite Online Instructors
+# User Story
+The user will have to login to have access to their specific lists
 
-[__Colt Steele__](https://www.youtube.com/channel/UCrqAGUPPMOdo0jfQ6grikZw)
+A user can make a list of every location they have been to and have access to that list as long as they don't remove it.
 
-[__Brad Traversy__](https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA)
+They will also have the ability to see every list saved on a map. From east coast to west coast. 
 
-[__Jose Santos Garcia__](https://www.youtube.com/channel/UC46wWUso9H5KPQcoL9iE3Ug)
 
-[__Stephen Grider__](https://www.youtube.com/channel/UCQCaS3atWyNHEy5PkDXdpNg/)
 
-## Steps
+## Approach
+Our approach to this app was to first give our ideas and see what we could agree on as a group. The next step was finding what project management tool we wanted to use and distributing task amongst each other
 
-**Install Gulp Globally**
-```bash
-npm i -g gulp-cli
-```
 
-**Start the dev server**
-```bash
-npm run dev
-```
-### or
-```bash
-yarn dev
-```
-
-**Start the dev server with proxy**
-```bash
-npm run proxy
-```
-
-**Build files for production**
-```bash
-yarn build
+## Challenges
+Working in groups is has challenges. Trying work around everyone's schedule is hard. GIT GIT GIT GIT was the biggest challenges of them all. We ran into
 ```
 ### or
 

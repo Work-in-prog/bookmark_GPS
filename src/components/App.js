@@ -82,7 +82,7 @@ export default class App extends Component {
 
 ///-----------------------------Main Page -------------------------------/////////
 class Main extends React.Component {
-	render() { 
+	render() {
 		return (
 			<>
 				<h1>Main Page</h1>
