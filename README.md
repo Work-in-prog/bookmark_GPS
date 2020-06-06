@@ -20,9 +20,9 @@ Working in groups has challenges. Trying work around everyone's schedule is hard
 
 ## Technologies Used
 
-CSS
-Adobe Illustrator
-React
-Mongo DB
-Express.JS
-Google Map API
+- CSS
+-Adobe Illustrator
+- React
+- Mongo DB
+- Express.JS
+- Google Map API
