@@ -25,10 +25,13 @@ class BookmarkCard extends React.Component {
 			lat,
 			lon,
 			address,
+			complete,
 			scrollToBookmark,
+			updateBookmark,
 			deleteBookmark,
 			id,
-			index
+			index,
+			bookmark
 		} = this.props;
 		return (
 			<div
@@ -41,7 +44,16 @@ class BookmarkCard extends React.Component {
 				<p>
 					Lat:{lat}, Lon:{lon}
 				</p>
-				<button>Edit</button>
+				<p>
+					{() => {
+						if (complete) {
+							return 'Visited';
+						} else {
+							return 'Not Yet Visited';
+						}
+					}}
+				</p>
+				<button onClick={updateBookmark(bookmark)}>Update</button>
 				<button
 					onClick={() => {
 						deleteBookmark(id, index);
@@ -129,7 +141,21 @@ export default class Listing extends React.Component {
 		});
 	};
 
-	updateBookmark;
+	updateBookmark = bookmark => {
+		bookmark.complete = !bookmark.complete;
+		fetch(`/bookmarks/${bookmark._id}`, {
+			body: JSON.stringify(bookmark),
+			method: 'PUT',
+			headers: {
+				Accept: 'application/json, text/plain, */*',
+				'Content-Type': 'application/json'
+			}
+		})
+			.then(response => response.json())
+			.then(data => {
+				this.getData();
+			});
+	};
 
 	componentDidMount() {
 		//set pinList to the masterlist received from database
@@ -139,6 +165,7 @@ export default class Listing extends React.Component {
 	render() {
 		const { scrollToBookmark } = this.props;
 		const deleteBookmark = this.deleteBookmark;
+		const updateBookmark = this.updateBookmark;
 		return (
 			<div>
 				{/* //entry form */}
@@ -157,20 +184,6 @@ export default class Listing extends React.Component {
 				</div>
 				{/* //a box to contain all the bookmarks */}
 				<div>
-					<h1>This is a test card</h1>
-					{/* a test bookmark */}
-					<BookmarkCard
-						lat={80}
-						lon={-20}
-						address={'123 Main Street USA'}
-						scrollToBookmark={scrollToBookmark}
-					/>
-					<BookmarkCard
-						lat={-80}
-						lon={20}
-						address={'456 Who Knows Where'}
-						scrollToBookmark={scrollToBookmark}
-					/>
 					{/* a list of procedurally generated bookmarks */}
 					{this.state.bookmarks.map((bookmark, index) => {
 						return (
@@ -178,8 +191,11 @@ export default class Listing extends React.Component {
 								lat={bookmark.lat}
 								lon={bookmark.lon}
 								address={bookmark.addess}
+								complete={bookmark.complete}
+								bookmark={bookmark}
 								scrollToBookmark={scrollToBookmark}
 								deleteBookmark={deleteBookmark}
+								updateBookmark={updateBookmark}
 								id={bookmark._id}
 								index={index}
 							/>
