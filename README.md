@@ -12,11 +12,11 @@ They will also have the ability to see every list saved on a map. From east coas
 
 
 ## Approach
-Our approach to this app was to first give our ideas and see what we could agree on as a group. The next step was finding what project management tool we wanted to use and distributing task amongst each other
+Our approach to this app was to first give our ideas and see what we could agree on as a group. The next step was finding what project management tool we wanted to use to distribute task amongst each other. 
 
 
 ## Challenges
-Working in groups has challenges. Trying work around everyone's schedule is hard. GIT GIT GIT GIT was the biggest challenges of them all. We ran into so many conflicts and problems with the teams seeing changes that other team members were making. Working with the google map api comes in a strong second place with challenges. Reading the documentation and implementing it was no easy task. 
+Working in groups has challenges. Trying work around everyone's schedule is hard. Working with the google map api had to be our biggest challenge.  Reading the documentation and implementing it was no easy task.  GIT GIT GIT GIT  came in a close second. We ran into so many conflicts and problems with the teams seeing changes that other team members were making. Eventually things got better and we got the hang of it.
 
 ## Technologies Used
 

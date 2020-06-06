@@ -4,6 +4,12 @@ import Listing from './Listing';
 import { Link, Switch, Route } from 'react-router-dom';
 import { render } from 'react-dom';
 import Map from '../components/Map.js';
+let endpoint;
+if(process.env.NODE_ENV === "development") {
+	endpoint = 'http://localhost:8080/bookmarks'
+} else {
+	endpoint = 'users.login'
+}
 
 import axios from 'axios';
 
@@ -33,7 +39,7 @@ export default class App extends Component {
 		//make .post dynamic for heroku//
 		axios
 
-			.post('http://localhost:8080/users/login', {
+			.post(`${endpoint}/index`, {
 				email: this.state.email,
 				password: this.state.password
 			})
