@@ -30,6 +30,7 @@ a {
   font-weight: 400;
 }
 
+<<<<<<< HEAD
 
 // form {
 //   display: flex;
@@ -64,6 +65,16 @@ a {
 //   font-family: fantasy;
 //   font-size: large;
 // }
+=======
+.input {
+  border: 1px solid hotpink !important;
+  box-shadow: 5px 5px 15px 15px #214753 !important;
+  font-weight: bolder !important;
+  font-family: fantasy;
+  font-size: large;
+  cursor: pointer;
+}
+>>>>>>> 0daeaa990717ee5b4c288e7aadea379cd512ec07
 
 ol,
 ul {
