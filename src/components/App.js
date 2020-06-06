@@ -71,7 +71,9 @@ export default class App extends Component {
 									onChange={this.handleChange}
 								></input>
 							</div>
-							<input type="submit" value="login"></input>
+							<div className="input">
+								<input type="submit" value="login"></input>
+							</div>
 						</form>
 					</div>
 				)}
