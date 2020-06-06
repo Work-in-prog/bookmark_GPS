@@ -5,10 +5,10 @@ import { Link, Switch, Route } from 'react-router-dom';
 import { render } from 'react-dom';
 import Map from '../components/Map.js';
 let endpoint;
-if(process.env.NODE_ENV === "development") {
-	endpoint = 'http://localhost:8080/bookmarks'
+if (process.env.NODE_ENV === 'development') {
+	endpoint = 'http://localhost:8080/bookmarks';
 } else {
-	endpoint = 'bookmarks'
+	endpoint = 'bookmarks';
 }
 
 import axios from 'axios';
