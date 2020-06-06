@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Home from './Home.js';
+import Home from '../components/Home.js';
 import Listing from './Listing';
-import { Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
 import { render } from 'react-dom';
 import Map from '../components/Map.js';
 
@@ -28,11 +28,18 @@ export default class App extends Component {
 		this.setState({ isLoggedIn: false });
 	}
 
+	handleLogOut() {
+		this.setState({
+			email: '',
+			password: '',
+			isLoggedIn: false
+		});
+		localStorage.clear();
+	}
 	handleLogin = event => {
 		event.preventDefault();
 		//make .post dynamic for heroku//
 		axios
-
 			.post('http://localhost:8080/users/login', {
 				email: this.state.email,
 				password: this.state.password
@@ -51,7 +58,9 @@ export default class App extends Component {
 				{/* <Link to="/home">Go to Other Page</Link> */}
 
 				{this.state.isLoggedIn ? (
-					<Main />
+					<BrowserRouter>
+						<Main />
+					</BrowserRouter>
 				) : (
 					<div className="container">
 						<form onSubmit={this.handleLogin}>
@@ -87,7 +96,9 @@ class Main extends React.Component {
 			<>
 				<h1>Main Page</h1>
 				<AppMap defaultZoom={4} />
-				<button onClick={() => window.location.reload(false)}>Log out</button>
+				<button onClick={this.props.handleLogOut}>Log out</button>
+
+				<Link to="/home">Go to Other Page</Link>
 			</>
 		);
 	}
