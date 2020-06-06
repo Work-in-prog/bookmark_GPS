@@ -4,9 +4,6 @@ import Listing from './Listing';
 import { Link, Switch, Route } from 'react-router-dom';
 import { render } from 'react-dom';
 import Map from '../components/Map.js';
-<<<<<<< HEAD
-import Mapstyle from './Mapstyle.js';
-=======
 let endpoint;
 if (process.env.NODE_ENV === 'development') {
 	endpoint = 'http://localhost:8080/bookmarks';
@@ -14,7 +11,6 @@ if (process.env.NODE_ENV === 'development') {
 	endpoint = 'bookmarks';
 }
 
->>>>>>> 0daeaa990717ee5b4c288e7aadea379cd512ec07
 import axios from 'axios';
 
 const googleMapsApiKey = 'AIzaSyCskdHri23YrHhmv4dJ5zwKm6WpCXPY9BE';
