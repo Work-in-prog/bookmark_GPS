@@ -116,10 +116,7 @@ class Main extends React.Component {
 ///----------------------------------------------------------------------/////////
 class AppMap extends React.Component {
 	state = {
-		places: [
-			{ latitude: 25.8103146, longitude: -80.1751609 },
-			{ latitude: 22.8103146, longitude: -80.1751609 }
-		]
+		places: []
 	};
 	componentDidMount() {
 		this.getLocation();
