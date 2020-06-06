@@ -100,7 +100,14 @@ class Main extends React.Component {
 			<>
 				<h1>Main Page</h1>
 				<AppMap defaultZoom={4} />
-				<button onClick={() => window.location.reload(false)}>Log out</button>
+
+				<button
+					type="button"
+					class="btn btn-secondary"
+					onClick={() => window.location.reload(false)}
+				>
+					Log out
+				</button>
 			</>
 		);
 	}
