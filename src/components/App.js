@@ -79,8 +79,7 @@ export default class App extends Component {
 								</div>
 								<div className="input">
 									<input
-										id="inputPassword2"
-										class="fadeIn fourth text-muted"
+										class="fadeIn fourth"
 										type="submit"
 										value="login"
 									></input>
