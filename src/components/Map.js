@@ -5,7 +5,8 @@ import {
 	GoogleMap,
 	withScriptjs,
 	Marker,
-	DirectionsRenderer
+	DirectionsRenderer,
+	InfoWindow
 } from 'react-google-maps';
 
 class MapDirectionsRenderer extends React.Component {
@@ -13,7 +14,10 @@ class MapDirectionsRenderer extends React.Component {
 		directions: null,
 		error: null,
 		longitude: null,
-		latitude: null
+		latitude: null,
+		travelMode: 'DRIVING',
+		origin: '',
+		destination: ''
 	};
 
 	getLocation() {
@@ -49,18 +53,18 @@ const Map = withScriptjs(
 		<GoogleMap
 			defaultCenter={props.defaultCenter}
 			defaultZoom={props.defaultZoom}
-			onLoad={() => {
-				console.log('Helooooo');
-			}}
+			options={props.options}
 		>
 			{props.markers.map((marker, index) => {
 				const position = { lat: marker.latitude, lng: marker.longitude };
-				return <Marker key={index} position={position} />;
+				return (
+					<Marker key={index} name={'current location'} position={position}>
+						<InfoWindow onCloseClick={props.handleCloseCall}>
+							<span>Current location</span>
+						</InfoWindow>
+					</Marker>
+				);
 			})}
-			<MapDirectionsRenderer
-				places={props.markers}
-				travelMode={google.maps.TravelMode.DRIVING}
-			/>
 		</GoogleMap>
 	))
 );
