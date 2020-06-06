@@ -95,7 +95,8 @@ export default class Listing extends React.Component {
 			body: JSON.stringify({
 				address: this.state.address,
 				lat: this.state.lat,
-				lon: this.state.lon
+				lon: this.state.lon,
+				complete: false
 			}),
 			method: 'POST',
 			headers: {

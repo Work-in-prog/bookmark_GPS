@@ -17,8 +17,8 @@ export default class App extends Component {
 			email: '',
 			password: '',
 			currentPin: {
-				lat: 0,
-				lon: 0,
+				lat: 10,
+				lon: -30,
 				address: ''
 			}
 		};
@@ -51,31 +51,36 @@ export default class App extends Component {
 	scrollToBookmark(lat, lon, address) {
 		//get info from a bookmark and send it to the map
 		console.log('scrollToBookmark() was called', lat, lon, address);
-		// this.setState({
-		// 	currentPin: {
-		// 		lat: lat,
-		// 		lon: lon,
-		// 		address: address
-		// 	}
-		// });
+		this.setState({
+			currentPin: {
+				lat: lat,
+				lon: lon,
+				address: address
+			}
+		});
 
-		// const myLatlng = new google.maps.LatLng(lat, lon);
-		// const mapOptions = {
-		// 	zoom: 4,
-		// 	center: myLatlng
-		// };
-		// const map = new google.maps.Map(
-		// 	document.getElementById('mainmap'),
-		// 	mapOptions
-		// );
+		const myLatlng = new google.maps.LatLng(lat, lon);
+		const mapOptions = {
+			zoom: 4,
+			center: myLatlng
+		};
+		const map = r('mainmap');
+		console.log(map);
 
-		// var marker = new google.maps.Marker({
-		// 	position: myLatlng,
-		// 	title: 'Hello World!'
-		// });
+		var marker = new google.maps.Marker({
+			position: myLatlng,
+			title: 'Hello World!'
+		});
 
+		map.panTo(myLatlng);
 		// marker.setMap(map);
 	}
+
+	//because 'this' isn't bound, 'this' will reference whichever
+	//component is calling it. It's been passed to the Map itself.
+	remotePan = latlng => {
+		this.panTo(latlng);
+	};
 
 	render() {
 		return (
@@ -101,8 +106,8 @@ export default class App extends Component {
 				<Home />
 				<h2>This is the home page</h2>
 				<AppMap
-					id="mainmap"
-					defaultZoom={7}
+					remotePan={this.remotePan}
+					defaultZoom={2}
 					defaultCenter={{
 						lat: this.state.currentPin.lat,
 						lng: this.state.currentPin.lon
@@ -157,6 +162,7 @@ class AppMap extends React.Component {
 
 		return (
 			<Map
+				remotePan={this.props.remotePan}
 				googleMapURL={
 					'https://maps.googleapis.com/maps/api/js?key=' +
 					googleMapsApiKey +
