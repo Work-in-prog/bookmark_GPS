@@ -58,9 +58,7 @@ export default class App extends Component {
 				{/* <Link to="/home">Go to Other Page</Link> */}
 
 				{this.state.isLoggedIn ? (
-					<BrowserRouter>
-						<Main />
-					</BrowserRouter>
+					<Main />
 				) : (
 					<div className="container">
 						<form onSubmit={this.handleLogin}>
