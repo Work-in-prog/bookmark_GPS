@@ -2,11 +2,62 @@
 @import "reset";
 
 
+*{
+    
+}
+html {
+    background-color: lightblue;
+    font-family: cursive;
+}
 
 body {
-  line-height: 1;
-  background: white;
-  color: green;
+    background-image: url("bookmark_GPS/images/gps-01.png");
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #DAE8C9 !important;
+    }
+
+#GoogleMap {
+    box-shadow: #263857;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50vh;
+  margin: auto;
+  margin-top: 2rem;
+  height: 35em;
+  font-size: 20px;
+  .form-group {
+    display: block;
+    text-align: center;
+    box-shadow: 2px 2px 5px 5px cadetblue;
+    box-sizing: border-box;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    padding: 2px 50px 2px 100px;
+    font-family: cursive;
+    color: #F77A92;
+    font-weight: bold;
+    }
+}
+
+.input {
+  border: 1px solid hotpink !important;
+  box-shadow: 5px 5px 15px 15px #214753 !important;
+  font-weight: bolder !important;
+  font-family: fantasy;
+  font-size: large;
 }
 
 ol,

@@ -4324,7 +4324,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true,\n})\n
   !*** ./node_modules/react-google-maps/lib/index.js ***!
   \*****************************************************/
 /*! no static exports found */
-/*! exports used: DirectionsRenderer, GoogleMap, Marker, withGoogleMap, withScriptjs */
+/*! exports used: DirectionsRenderer, GoogleMap */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

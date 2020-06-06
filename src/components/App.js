@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Home from './Home.js';
+import Home from '../components/Home.js';
 import Listing from './Listing';
-import { Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
 import { render } from 'react-dom';
 import Map from '../components/Map.js';
 
@@ -24,12 +24,22 @@ export default class App extends Component {
 			[event.target.id]: event.target.value
 		});
 	};
+	logout() {
+		this.setState({ isLoggedIn: false });
+	}
 
+	handleLogOut() {
+		this.setState({
+			email: '',
+			password: '',
+			isLoggedIn: false
+		});
+		localStorage.clear();
+	}
 	handleLogin = event => {
 		event.preventDefault();
 		//make .post dynamic for heroku//
 		axios
-
 			.post('http://localhost:8080/users/login', {
 				email: this.state.email,
 				password: this.state.password
@@ -45,30 +55,56 @@ export default class App extends Component {
 	render() {
 		return (
 			<div className="Page-wrapper">
-				<Link to="/home">Go to Other Page</Link>
-				<h2>This is the home page.</h2>
-				<form onSubmit={this.handleLogin}>
-					<input id="email" type="email" onChange={this.handleChange}></input>
-					<input
-						id="password"
-						type="password"
-						onChange={this.handleChange}
-					></input>
-					<input type="submit" value="login"></input>
-				</form>
+				{/* <Link to="/home">Go to Other Page</Link> */}
+
 				{this.state.isLoggedIn ? (
-					<h1>We are logged in</h1>
+					<Main />
 				) : (
-					<h1>Sorry you are not logged in</h1>
+					<div className="container">
+						<form onSubmit={this.handleLogin}>
+							<div className="form-group">
+								<label>Email address</label>
+								<input
+									id="email"
+									type="email"
+									onChange={this.handleChange}
+								></input>
+							</div>
+							<div className="form-group">
+								<label>Password</label>
+								<input
+									id="password"
+									type="password"
+									onChange={this.handleChange}
+								></input>
+							</div>
+							<div className="input">
+								<input type="submit" value="login"></input>
+							</div>
+						</form>
+					</div>
 				)}
-				<Home />
-				<h2>This is the home page</h2>
-				<AppMap defaultZoom={4} />
 			</div>
 		);
 	}
 }
 
+///-----------------------------Main Page -------------------------------/////////
+class Main extends React.Component {
+	render() {
+		return (
+			<>
+				<h1>Main Page</h1>
+				<AppMap defaultZoom={4} />
+				<button onClick={this.props.handleLogOut}>Log out</button>
+
+				<Link to="/home">Go to Other Page</Link>
+			</>
+		);
+	}
+}
+
+///----------------------------------------------------------------------/////////
 class AppMap extends React.Component {
 	state = {
 		places: [
