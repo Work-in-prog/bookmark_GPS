@@ -65,7 +65,7 @@
     "@types/markerclustererplus": "^2.1.33",
     "@types/react": "^16.9.35",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "google-maps-react": "^2.0.6",
     "gulp-nodemon": "^2.5.0",
     "history": "^4.10.1",
